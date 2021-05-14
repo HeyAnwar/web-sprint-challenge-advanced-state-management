@@ -1,5 +1,37 @@
 import axios from 'axios';
 
+export const FETCH_START = 'FETCH_START';
+export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+export const FETCH_FAILURE = 'FETCH_FAILURE';
+export const ADD_SMURF = 'ADD_SMURF';
+export const ADD_ERROR = 'ADD_ERROR';
+
+export const fetchSmurfs = () => (dispatch) => {
+    dispatch({type: FETCH_START})
+    axios.get('http://localhost:3333/smurfs')
+    .then((res) => {
+        dispatch({type: FETCH_SUCCESS, payload: res.data})
+        console.log(res)
+    })
+    .catch(err => {
+        dispatch({type: FETCH_FAILURE, payload: err})
+    })
+}
+
+export const addSmurf = ({name, nickname, position, description}) => {
+    return{
+        type:ADD_SMURF,
+        payload:{name, nickname, position, description}
+    }
+}
+
+export const addError = (error) => {
+    return{
+        type:ADD_ERROR,
+        payload: error
+    }
+}
+
 //Task List:
 //1. Add a thunk action called fetchSmurfs that triggers a loading status display in our application, performs an axios call to retreive smurfs from our server, saves the result of that call to our state and shows an error if one is made.
 //2. Add a standard action that allows us to add new smurf (including the name, nickname, position, summary)
