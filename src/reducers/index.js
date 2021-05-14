@@ -1,3 +1,4 @@
+import { FETCH_START, FETCH_SUCCESS, FETCH_FAILURE, ADD_SMURF, ADD_ERROR } from '../actions/index'
 
 export const initialState = {
     smurfArray: [],

@@ -18,16 +18,16 @@ export const fetchSmurfs = () => (dispatch) => {
     })
 }
 
-export const newSmurf = ({name, nickname, position, summary}) => {
+export const addSmurf = ({name, nickname, position, summary}) => {
     return{
-        type:NEW_SMURF,
+        type:ADD_SMURF,
         payload:{name, nickname, position, summary}
     }
 }
 
-export const setError = (error) => {
+export const addError = (error) => {
     return{
-        type:SET_ERROR,
+        type:ADD_ERROR,
         payload: error
     }
 }
